@@ -56,13 +56,7 @@ foreach ($videos as $video) {
 <body>
     @include('navbar')
     <div class="MainHome">
-        <div class="container">
-            <a href="#" class="classin">Class IX</a>
-            <a href="#" class="classin">Class X</a>
-            <a href="#" class="classin">Class XI</a>
-            <a href="#" class="classin">Class XII</a>
-        </div>
-
+        @include("subheading")
         <div class="HomeContainer">
             <div class="videosClassNine">
                 <div class="MainClassNine">
@@ -87,7 +81,7 @@ foreach ($videos as $video) {
                     <div class="MainClassNine">
                         @forelse ($tenVideos as $video)
                             <div class="cards">
-                                <img class="thumbnail" src={{$video["thumbnail"]}} alt="Thumbnail" />
+                                <img class="thumbnail" src="{{asset('storage/'.$video->thumbnail)}}" alt="Thumbnail" />
                                 <h3 class="title">{{$video->title}}</h3>
                                 <div class="details">
                                     <div class="subject">{{$video->subjectName}}</div>
@@ -107,7 +101,7 @@ foreach ($videos as $video) {
                     <div class="MainClassNine">
                         @forelse ($elevenVideos as $video)
                             <div class="cards">
-                                <img class="thumbnail" src={{$video["thumbnail"]}} alt="Thumbnail" />
+                                <img class="thumbnail" src="{{asset('storage/'.$video->thumbnail)}}" alt="Thumbnail" />
                                 <h3 class="title">{{$video->title}}</h3>
                                 <div class="details">
                                     <div class="subject">{{$video->subjectName}}</div>
@@ -127,7 +121,7 @@ foreach ($videos as $video) {
                     <div class="MainClassNine">
                         @forelse ($twelveVideos as $video)
                             <div class="cards">
-                                <img class="thumbnail" src={{$video["thumbnail"]}} alt="Thumbnail" />
+                                <img class="thumbnail" src="{{asset('storage/'.$video->thumbnail)}}" alt="Thumbnail" />
                                 <h3 class="title">{{$video->title}}</h3>
                                 <div class="details">
                                     <div class="subject">{{$video->subjectName}}</div>

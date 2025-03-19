@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\AdminProfileController;
@@ -39,14 +40,19 @@ Route::post('/updating', [UpdateProfileController::class,'update'])->name('profi
 
 //Home Routing
 
-Route::get('/admin/home', function () {
-    return view('MainPage.adminHomePage');
-});
+Route::get('/admin/home', [AdminController::class, 'index']);
+Route::post('/reply', [AdminController::class, 'messageReply']);
 Route::get('/teacher/home', [TeacherHomeController::class,'index']);
+
 Route::get('/student/home', [StudentHomeController::class, 'index']);
+Route::get('/student/nine', [StudentHomeController::class, 'nine']);
+Route::get('/student/ten', [StudentHomeController::class, 'ten']);
+Route::get('/student/eleven', [StudentHomeController::class, 'eleven']);
+Route::get('/student/twelve', [StudentHomeController::class, 'twelve']);
 
 Route::get('/videoedit/{video_id}', [VideoEditController::class, 'index'])->name('editing');
 Route::post('/videoedit/{video_id}', [VideoEditController::class, 'update'])->name("updating");
+Route::get('/videodelete/{video_id}', [VideoEditController::class, 'delete'])->name("deleting");
 
 Route::get('/logout', function () {
     return view('MainPage.logout');
