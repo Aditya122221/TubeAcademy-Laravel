@@ -225,6 +225,33 @@ body {
     text-shadow: 0px 0px 12px #cae2fd;
 }
 
+.err {
+    color: red;
+    font-family: 'Ubuntu';
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.succ {
+    color: #0a3622;
+    background: #d1e7dd;
+    border: #a3cfbb solid 2px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.erro {
+    color: #58151c;
+    background: #f8d7da;
+    padding: 10px;
+    border: #f1aeb5 solid 2px;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;

@@ -1,13 +1,13 @@
 <?php
 session_start();
-if(!isset($_SESSION["role"])){
+if (!isset($_SESSION['role'])) {
     header('Location: /');
-    exit;
+    exit();
 }
 
-if($_SESSION["role"] != 'admin'){
+if ($_SESSION['role'] != 'admin') {
     header('Location: /');
-    exit;
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ if($_SESSION["role"] != 'admin'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/signup.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
     <title>TubeAcademy | SignUp</title>
 </head>
 
@@ -26,26 +26,48 @@ if($_SESSION["role"] != 'admin'){
         <div class="sigern">
             <div class="container">
                 <div class="illustration">
-                    <a href="/admin/home"><img class="logoType" src="{{asset('Images/Logo.png')}}" alt="Illustration" /></a>
+                    <a href="/admin/home"><img class="logoType" src="{{ asset('Images/Logo.png') }}"
+                            alt="Illustration" /></a>
                 </div>
                 <div class="formContainer">
                     <h2 class="h2">Create Account</h2>
-                    <span class="succ">{{session('success')}}</span>
+
+                    @php
+                        $errorClass = session('error') != '' ? 'erro' : 'hidden';
+                    @endphp
+                    @php
+                        $succClass = session('success') != '' ? 'succ' : 'hidden';
+                    @endphp
+                    <span class="{{ $errorClass }}">{{ session('error') }}</span>
+                    <span class="{{ $succClass }}">{{ session('success') }}</span>
                     <form class="form" method="post">
                         @csrf
+
+                        @error('fName')
+                            <span class="err">{{ $message }}</span>
+                        @enderror
                         <label class="label" for="fName">First Name:</label>
                         <!-- Optional: Insert error message here if applicable -->
                         <input type="text" id="first-name" name="fName" required class="inputField" />
 
+                        @error('lName')
+                            <span class="err">{{ $message }}</span>
+                        @enderror
                         <label class="label" for="lName">Last Name:</label>
                         <!-- Optional: Insert error message here if applicable -->
                         <input type="text" id="last-name" name="lName" required class="inputField" />
 
+                        @error('pNumber')
+                            <span class="err">{{ $message }}</span>
+                        @enderror
                         <label class="label" for="pNumber">Phone Number:</label>
                         <!-- Optional: Insert error message here if applicable -->
                         <input type="text" id="phone" name="pNumber" required class="inputField" minlength="10"
                             maxlength="10" />
 
+                        @error('role')
+                            <span class="err">{{ $message }}</span>
+                        @enderror
                         <div class="radioInput">
                             <label class="label">
                                 <input type="radio" name="role" value="admin" class="value1" />
@@ -61,10 +83,16 @@ if($_SESSION["role"] != 'admin'){
                             </label>
                         </div>
 
+                        @error('password')
+                            <span class="err">{{ $message }}</span>
+                        @enderror
                         <label class="label" for="password">Password:</label>
                         <!-- Optional: Insert error message here if applicable -->
                         <input type="password" id="password" name="password" required class="inputField" />
 
+                        @error('cPassword')
+                            <span class="err">{{ $message }}</span>
+                        @enderror
                         <label class="label" for="cPassword">Confirm Password:</label>
                         <!-- Optional: Insert error message here if applicable -->
                         <input type="password" id="confirm-password" name="cPassword" required class="inputField" />
