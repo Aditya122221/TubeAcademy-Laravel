@@ -47,8 +47,7 @@ if ($_SESSION['role'] == 'Student') {
                 <div class="left1">
                     <div class="left2">
                         {{-- <img src={{$image}} class="left3" alt="User Image" /> --}}
-                        <img src="{{ $user['avatar'] == '' ? asset('Images/TeamLeader.png') : asset('storage/' . $user->avatar) }}"
-                            class="left3" alt="User Image" />
+                        <img src="{{$user["avatar"]=="" ? asset("Images/TeamLeader.png") : asset("storage/" . $user->avatar)}}" alt="Profile" class="left3">
                     </div>
                     <div class="left4">{{ $user['fName'] }} {{ $user['lName'] }}</div>
                     <div class="left5">{{ $user['email'] }}</div>

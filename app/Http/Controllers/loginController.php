@@ -21,7 +21,7 @@ class loginController extends Controller
             "password" => "required",
             "role" => "required"
         ]);
-        $Reg_ID = (int) $data['Reg_ID'];
+        $Reg_ID = (int)$data['Reg_ID'];
 
         if ($data["role"] == 'admin') {
             $admin = AdminModel::where('Registration_ID', $Reg_ID)->first();
