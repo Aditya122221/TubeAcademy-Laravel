@@ -16,7 +16,7 @@ use App\Http\Controllers\StudentHomeController;
 
 Route::get('/', [LoginController::class, 'index'])->name('backtologin');
 Route::post('/', [LoginController::class, 'login']);
-Route::get('/visiting/{regis_id}/{pnumber}/{role}', [ForgotPasswordController::class, 'index'])->name('visiting');
+Route::post('/visiting', [ForgotPasswordController::class, 'index']);
 Route::post('/forgotpass', [ForgotPasswordController::class,'update'])->name('passwordupdating');
 
 Route::get('/signup', [SignupController::class, "index"]);

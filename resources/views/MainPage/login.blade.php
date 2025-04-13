@@ -77,38 +77,43 @@ if (isset($_SESSION['role'])) {
 
             <div class="login">
 
-                <label class="label" for="ccc" aria-hidden="true">Forgot Password</label>
+                <form action="/visiting" method="post">
+                    @csrf
 
-                {{-- <span class="err">fError"</span> --}}
+                    <label class="label" for="ccc" aria-hidden="true">Forgot Password</label>
 
-                <input class="input" type="text" id="regis" name="regis" placeholder="Enter Registration ID"
-                    required="" />
+                    {{-- <span class="err">fError"</span> --}}
 
-                <input class="input" id="pNumber" type="text" name="pNumber" placeholder="Enter Phone Number"
-                    required="" />
+                    <input class="input" type="text" id="regis" name="regis"
+                        placeholder="Enter Registration ID" required="" />
 
-                <div class="radioInputs">
-                    <label class="radio">
-                        <input value="fadmin" type="radio" name="frole" />
-                        <span class="name">admin</span>
-                    </label>
+                    <input class="input" id="pNumber" type="text" name="pNumber" placeholder="Enter Phone Number"
+                        required="" />
 
-                    <label class="radio">
-                        <input value="fTeacher" type="radio" name="frole" />
-                        <span class="name">Teacher</span>
-                    </label>
+                    <div class="radioInputs">
+                        <label class="radio">
+                            <input value="fadmin" type="radio" name="frole" />
+                            <span class="name">admin</span>
+                        </label>
 
-                    <label class="radio">
-                        <input value="fStudent" type="radio" name="frole" />
-                        <span class="name">Student</span>
-                    </label>
-                </div>
+                        <label class="radio">
+                            <input value="fTeacher" type="radio" name="frole" />
+                            <span class="name">Teacher</span>
+                        </label>
 
-                <button onclick="redirectToRoute()" class="button" type="submit">Next</button>
+                        <label class="radio">
+                            <input value="fStudent" type="radio" name="frole" />
+                            <span class="name">Student</span>
+                        </label>
+                    </div>
+
+                    <button class="button" type="submit">Next</button>
+                </form>
             </div>
+
         </div>
     </div>
-    <script src="{{asset("js/login.js")}}"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
 </body>
 
 </html>

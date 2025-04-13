@@ -10,13 +10,14 @@ use Illuminate\Support\Facades\Session;
 
 class ForgotPasswordController extends Controller
 {
-    public function index($regis_id, $pnumber, $role)
+    public function index(Request $request)
     {
-        if($regis_id == ""){
+
+        if($request->regis == ""){
             return redirect("/")->with("error", "Registration ID is required");
-        } elseif($pnumber == ""){
+        } elseif($request->pNumber == ""){
             return redirect("/")->with("error", "Phone Number is required");
-        } elseif ($role == ""){
+        } elseif ($request->frole == ""){
             return redirect("/")->with("error", "Role is required");
         }
         $roles = [
@@ -25,10 +26,10 @@ class ForgotPasswordController extends Controller
             "fStudent" => StudentModel::class
         ];
 
-        $model = $roles[$role];
-        $user = $model::where("Registration_ID", (int)$regis_id)->first();
+        $model = $roles[$request->frole];
+        $user = $model::where("Registration_ID", (int)$request->regis)->first();
         if ($user) {
-            if ($user["pNumber"] == $pnumber) {
+            if ($user["pNumber"] == $request->pNumber) {
                 Session::put("user", $user);
                 return view("MainPage.passwordUpdate");
             } else {
