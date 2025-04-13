@@ -51,7 +51,11 @@ class TeacherProfileController extends Controller
         $uploadVideo->duration = 0;
         $uploadVideo->video = $videoPath;
         $uploadVideo->views = 0;
-        $uploadVideo->save();
+        $done = $uploadVideo->save();
+
+        if (!$done) {
+            return redirect("/teacher/profile")->with("error", "Video Upload Failed");
+        }
 
         return redirect("/teacher/profile")->with("success", "Video Uploaded Successfully");
     }

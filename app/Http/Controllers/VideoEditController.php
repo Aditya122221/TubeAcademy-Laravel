@@ -76,12 +76,10 @@ class VideoEditController extends Controller
         }
 
         $deletedData = UploadVideoModel::where("Video_ID", (int) $video_id)->first();
-        
+
         Storage::disk('public')->delete($deletedData->thumbnail);
         Storage::disk('public')->delete($deletedData->video);
         $deletedData->delete();
-
-        echo "<script>alert('Video deleted');</script>";
 
         return redirect('/');
     }
